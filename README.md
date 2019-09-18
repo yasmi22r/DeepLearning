@@ -1,4 +1,4 @@
-# DeepLearning
+# Application of Deep Learning models: Face Detection with MTCNN 
 
 ## Summary
 We perform face detection in python using deep learning model called MTCNN (Multi-task Cascade Convolutional Neural Network).
