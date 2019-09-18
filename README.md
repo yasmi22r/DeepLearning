@@ -151,7 +151,7 @@ detector.save("model.h5")
 
 Thee results below shows the confidence metric with high accuracy along with other details:
 
-![image](face details.png)
+![image](face_details.png)
 
 
 1. [MTCNN implementation](https://github.com/ipazc/mtcnn/blob/master/mtcnn/mtcnn.py?fbclid=IwAR2iPpKUK_d4IuxddrJy0gJyOnE_bDl9oYQ_FfZu5hsyy8Fkoh0L4I52lD4)
