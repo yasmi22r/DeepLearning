@@ -89,28 +89,35 @@ Thee results below shows the confidence metric with high accuracy along with oth
 ![image](face_details.png)
 
 
-**Fig 3:** Detects all the faces in the image and prints out a summary for each image detected highlighting coordinates of the box bounding, confidence and the coordinates of the keypoints. 
+**Fig 3:** Detects all the faces in the sample image and prints out a summary for each image detected highlighting coordinates of the box bounding, confidence and the coordinates of the keypoints. 
 
-Overall, the model gave satisfactory outcomes as the model was tested aganist candidates of different ethnicity, samples that represented diversity. However, there were a few exceptions:
+Overall, the model gave satisfactory outcomes as the model was tested aganist candidates of different ethnicities, samples that represented diversity. However, there were a few exceptions:
 
 The large visual variations of faces, such as occlusions, large pose variations and extreme lightings, impose great challenges for these tasks in real world applications.
 
-* When faces were overshadowed, the model couldn't detect those faces
-* If a candidated eyes are small,  the model couldn't detect those faces
-* If candidate wears glasses(for e.g candidate in the middle), the reflection on the glasses might mean those faces cannot be detected
-* Candidates with small facial features(such as smaller eyes, noses, mouth) cannot be bounded (the candidate in the front row)
+* When faces were overshadowed (constrasts\lighting conditions), the model couldn't detect those faces
+* If a candidate's eyes are small, the model couldn't detect those faces
+* If candidate wears glasses(for e.g candidate in the middle), the reflection on the glasses might meant those faces couldn't be detected
+* Candidates with small/ non-visible facial features(such as smaller eyes, noses, mouth) couldn't be outlined by the bounding box as it was difficult to mark facial landmark coordinates
 
-A plausible reason for the face detection to fail for particular subject might arise when the model fails to address two to three off the keypoints (facial landmark localizations). We have identified this at one of the leading factors but in order to solve and prove this statistically might reequire us to modify the core MTCNN algorithm and optimize it to better fit with our expected needs.
+A plausible reason for the face detection to fail for particular subject might arise when the model fails to address two to three off the keypoints (facial landmark localizations). For each of the conditions above, the keypoints detected might've varied giving rise to those problems. We have identified this as one of the leading factors of why certain faces couldn't be . detected/bounded but in order to solve and prove this statistically might require us to work with and modify the core MTCNN algorithm and optimize it to better fit with our expected needs.
 
 
 ## Conclusion & Future Work
 
-In this project, we have implemented MTCNN framework for face detection and alignment.  Our approach with the application of pre-trained weights on sample test set proves to be a light weight method that outperforms the state-of-the-art method while keeping real-time performance. In the future, we will alter the inherent correlation between face detection and other face  analysis  tasks, as mentioned in the discussion above to further improve the performance.
+In this project, we have implemented MTCNN framework for face detection and alignment.  Our approach with the application of pre-trained weights on sample test set proves to be a light weight method that outperforms the state-of-the-art method while enhancing real-time performance. In the future, we will alter the inherent correlation between face detection and other face  analysis tasks, as mentioned in the discussion above to further improve the performance of the MTCNN model.
 
 
 ## Data and Code Availability
 
 The MTCNN pre-trained weighted model with our test samples successfully generating the results:
+
+
+![image](results.png)
+
+
+
+Code snippet for testing samples with MTCNN pre-trained weighted models:
 
 ```
 
@@ -166,6 +173,7 @@ detector.save("model.h5")
 
 
 ```
+
 
 
 1. [MTCNN implementation](https://github.com/ipazc/mtcnn/blob/master/mtcnn/mtcnn.py?fbclid=IwAR2iPpKUK_d4IuxddrJy0gJyOnE_bDl9oYQ_FfZu5hsyy8Fkoh0L4I52lD4)
